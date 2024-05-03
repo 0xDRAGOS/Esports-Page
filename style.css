@@ -1,0 +1,75 @@
+:root {
+    --main-color: #096a2e;
+    --background-color: #09326a;
+    --box-shadow: #0000001a;
+    --white: #f5f5f5;
+}
+
+*{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+.header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--background-color);
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .logo{
+    width: 100px;
+    height: auto;
+}
+
+.header .navbar{
+    display: flex;
+    align-items: center;
+    font-size: 20rem;
+    margin-left: 2rem;
+    color: var(--white);
+
+}
+
+.header .navbar a{
+    font-size: 2rem;;
+    margin-left: 2rem;
+    color: var(--white);
+
+}
+
+.header .navbar a:hover{
+    color: var(--main-color)
+}
+
+.login-button {
+    margin-left: auto;
+    margin-right: 2rem; /* Adaugă spațiu între butonul de login și celelalte elemente ale barei de navigare */
+}
+
+.login-button a {
+    color: var(--white);
+    font-size: 2rem;
+}
+
+.login-button a:hover {
+    color: var(--main-color);
+}
