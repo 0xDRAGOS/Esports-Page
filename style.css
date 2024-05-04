@@ -1,6 +1,8 @@
 :root {
     --main-color: #096a2e;
     --background-color: #09326a;
+    --light-background-color: #438bef;
+    --hover-color: #808080;
     --box-shadow: #0000001a;
     --white: #f5f5f5;
 }
@@ -14,6 +16,7 @@
     border: none;
     text-decoration: none;
     text-transform: capitalize;
+    scroll-behavior: smooth;
 }
 
 html{
@@ -25,14 +28,12 @@ html{
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
     background-color: var(--background-color);
-    display: flex;
+    display: block;
     padding-top: 1rem;
     padding-bottom: 1rem;
     box-shadow: var(--box-shadow);
     align-items: center;
-    justify-content: space-between;
 }
 
 .header .logo{
@@ -40,14 +41,15 @@ html{
     height: auto;
 }
 
-.header .navbar{
+.header .navbar {
     display: flex;
     align-items: center;
-    font-size: 20rem;
+    font-size: 2rem;
     margin-left: 2rem;
     color: var(--white);
 
 }
+
 
 .header .navbar a{
     font-size: 2rem;;
@@ -57,19 +59,160 @@ html{
 }
 
 .header .navbar a:hover{
-    color: var(--main-color)
+    color: var(--hover-color)
 }
 
-.login-button {
-    margin-left: auto;
-    margin-right: 2rem; /* Adaugă spațiu între butonul de login și celelalte elemente ale barei de navigare */
+
+.header .login-button {
+    margin-left: 2rem;    
 }
 
-.login-button a {
-    color: var(--white);
-    font-size: 2rem;
+.header .login-button a {
+    padding: 0.5rem 1rem; 
+    color: var(--background-color);
+    background-color: var(--white); 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
 }
 
-.login-button a:hover {
-    color: var(--main-color);
+.header .login-button a:hover {
+    color: var(--background-color);
+    background-color: var(--hover-color); 
 }
+
+.footer{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background-color);
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+}
+
+.fa {  
+    padding: 20px;  
+    text-align: center;  
+    margin: 10px 5px;  
+    font-size: 50px;  
+    width: 50px;  
+    border-radius: 10px;
+  }  
+  .fa-facebook {  
+    background: var(--white);   
+    color: var(--background-color);  
+  }  
+  .fa-twitter {  
+    background: var(--white);  
+    color: var(--background-color); 
+  }  
+
+  .fa-instagram {  
+    background: var(--white);  
+    color: var(--background-color);
+  }  
+  .fa-youtube {  
+    background: var(--white);  
+    color: var(--background-color);
+  }  
+ 
+  .fa:hover {  
+      color: var(--hover-color);  
+  }  
+
+  .footer .copyright {
+    text-align: center;
+    color: var(--white)
+  }
+
+  .content {
+    justify-content: center;
+  }
+
+  .content a{
+    display: flex;
+    font-size: 90px;
+    margin-left: 2rem;
+    text-align: left;
+    align-items: center;
+    color: var(--white)
+  }
+
+  .sections {
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-image: url("./images/hydra_blue.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+  }
+  
+  .teams {
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-image: url("./images/hydra_pc.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+  }
+  
+  .announcements {
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-image: url("./images/news.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+  }
+
+  .gallery {
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-image: url("./images/hydra_gallery.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+  }
+
+  .contact {
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-image: url("./images/hydra_contact.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+  }
