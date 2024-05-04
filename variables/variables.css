@@ -1,0 +1,24 @@
+:root {
+    --main-color: #096a2e;
+    --background-color: #09326a;
+    --light-background-color: #438bef;
+    --hover-color: #808080;
+    --box-shadow: #0000001a;
+    --white: #f5f5f5;
+}
+
+*{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    scroll-behavior: smooth;
+}
+
+html{
+    font-size: 62.5%;
+}

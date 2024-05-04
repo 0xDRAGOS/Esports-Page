@@ -1,0 +1,85 @@
+@import "../site-structure/style.css";
+@import "../variables/variables.css";
+
+.content {
+    display:grid;
+    background-color: var(--light-background-color);
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 1080px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    padding: 2rem;
+  }
+
+.content h1 {
+    color:var(--white);
+    font-size: 200px;
+
+}
+
+.fullname,
+.email,
+.password {
+    display: grid;
+    grid-template-columns: 40rem;
+    gap: 1rem;
+}
+
+.fullname label,
+.email label,
+.password label {
+    display: grid;
+    justify-content: center;
+    color:var(--white);
+    padding: 1rem;
+    font-size: 25px;
+}
+
+.fullname input,
+.email input,
+.password input {
+    text-transform: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 1rem; 
+}
+
+.signup-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+    
+.signup-button button {
+    display: grid;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1.5rem 3rem; 
+    color: var(--background-color);
+    background-color: var(--white); 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+}
+
+.signup-button button:hover {
+    color: var(--background-color);
+    background-color: var(--hover-color); 
+}
+
+.content a{
+    display: flex;
+    font-size: 90px;
+    margin-left: 2rem;
+    text-align: left;
+    align-items: center;
+    color: var(--white)
+  }
