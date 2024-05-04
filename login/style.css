@@ -4,7 +4,7 @@
 .content {
     display:grid;
     background-color: var(--light-background-color);
-    background-image: url("../images/background.jpg");
+    background-image: url("../images/hydra_blue_background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
