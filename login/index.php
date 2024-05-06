@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (password_verify($_POST["password"], $user["password_hash"])) {
             if ($user["isAdmin"] == true) {
                 $is_admin = true;
+                $_SESSION["isAdmin"] = true;
            }
 
            session_start();

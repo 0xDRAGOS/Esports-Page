@@ -18,7 +18,7 @@
             </a>
         </div>
         <div id="teams" class="teams">
-            <a href="teams.php">THE OFFICIAL 
+            <a href="../teams/index.php">THE OFFICIAL 
                 <br>HYDRA 
                 <br>TEAMS
             </a>
@@ -36,7 +36,7 @@
             </a>
         </div>
         <div id="contact" class="contact">
-            <a href="contact.php">WANNA GET IN TOUCH
+            <a href="../contact/index.php">WANNA GET IN TOUCH
                 <br>WITH US?
             </a>
         </div>

@@ -1,0 +1,123 @@
+@import "../variables/variables.css";
+
+.content .container {
+    background-image: url("../images/hydra_contact.jpeg");
+    height: 500px;
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+}
+
+h1 {
+    color: var(--white);
+    margin-left: 2rem;
+    font-size: 150px;
+}
+
+.contact {
+    padding: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    background-color: var(--light-background-color);
+}
+
+.contact-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    padding: 20px;
+}
+
+.icon {
+    background-color: var(--white);
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    display: flex;
+    margin-left: 2rem;
+    font-size: 16px;
+    flex-direction: column;
+    color: var(--white);
+    text-transform: none;
+}
+
+h3 {
+    font-size: 25px;
+    color: var(--background-color)
+}
+
+.contact-form {
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    color: var(--white);
+    text-transform: none;
+}
+
+.fullname,
+.email,
+.message {
+    display: grid;
+    grid-template-columns: 40rem;
+    gap: 1rem;
+}
+
+.fullname label,
+.email label,
+.message label {
+    display: grid;
+    justify-content: center;
+    color:var(--white);
+    padding: 1rem;
+    font-size: 25px;
+}
+
+.fullname input,
+.email input,
+.message input {
+    text-transform: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 1rem; 
+}
+
+.send-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+    
+.send-button button {
+    display: grid;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1.5rem 3rem; 
+    color: var(--background-color);
+    background-color: var(--white); 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+}
