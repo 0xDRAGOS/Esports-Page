@@ -1,0 +1,71 @@
+.content .container {
+    background-image: url("../images/hydra_gallery.jpeg");
+    height: 500px;
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+}
+
+h1 {
+    color: var(--white);
+    margin-left: 2rem;
+    font-size: 150px;
+}
+
+
+
+h2 {
+    text-align: left;
+    font-size: 50px;
+    color: var(--white);
+    text-transform: none;
+}
+
+hr {
+    border: 1px solid var(--box-shadow);
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.gallery-container {
+    padding: 4rem;
+    width: 100%;
+    background-color: var(--light-background-color);
+}
+
+.team-details {
+    margin-bottom: 2rem;
+}
+
+.image-box img {
+    border-radius: 30px;
+    width: 100%;
+    border: 2px solid var(--white);
+}
+
+.images-container {
+    width: 100%;
+    display: flex;
+    background-color: var(--light-background-color);
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.image-box {
+    flex: 0 0 calc(33.333% - 1rem);
+    padding: 2rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    border-radius: 10px;
+    background-color: var(--background-color);
+}

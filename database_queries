@@ -1,6 +1,6 @@
 CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    created TIMESTAMP DEFAULT CURRENT TIMESTAMP,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	firstName VARCHAR(128),
   	lastName VARCHAR(128),
     email VARCHAR(255) UNIQUE,
@@ -49,6 +49,32 @@ CREATE TABLE player (
     FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE CASCADE
 );
 
+CREATE TABLE section (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    description TEXT,
+    game_id INT,
+    FOREIGN KEY (game_id) REFERENCES game(id) ON DELETE CASCADE
+);
+
+CREATE TABLE gallery (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    team_id INT,
+    FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE CASCADE
+);
+
+CREATE TABLE announcement (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    title VARCHAR(255),
+    content TEXT,
+    cover_image VARCHAR(255),
+    game_id INT,
+    FOREIGN KEY (game_id) REFERENCES game(id) ON DELETE CASCADE
+);
+
+
 SELECT player.firstName, player.lastName, player.aliasName, player.birthday, player.nationality, player.position, team.name as teamName, game.name as gameName
 FROM player
 JOIN team ON player.team_id = team.id
@@ -73,3 +99,53 @@ INSERT INTO player (firstName, lastName, birthday, nationality, aliasName, posit
 ('William', 'Liu', '1992-12-17', 'Chinese', 'WL', 'Midfielder', 1),
 ('Mia', 'Rodriguez', '1995-04-10', 'Mexican', 'MR', 'Defender', 1),
 ('Ethan', 'Gonzalez', '1996-01-21', 'Spanish', 'EG', 'Forward', 1);
+
+INSERT INTO section (description, game_id) VALUES 
+('Counter-Strike (CS) is a series of multiplayer tactical first-person shooter video games in which teams of terrorists battle to perpetrate an act of terror (bombing, hostage-taking, assassination) while counter-terrorists try to prevent it (bomb defusal, hostage rescue, escort mission). The series began on Windows in 1999 with the release of the first game, Counter-Strike. It was initially released as a modification ("mod") for Half-Life that was designed by Minh "Gooseman" Le and Jess "Cliffe" Cliffe before the rights to the mods intellectual property were acquired by Valve, the developers of Half-Life, who then turned Counter-Strike into a retail product released in 2000. The original Counter-Strike was followed by Counter-Strike: Condition Zero, developed by Turtle Rock Studios and released in March 2004. A previous version of Condition Zero that was developed by Ritual Entertainment was released alongside it as Condition Zero: Deleted Scenes. Eight months later, Valve released Counter-Strike: Source, a remake of the original Counter-Strike and the first in the series to run on Valves then-newly created Source engine.[4] The fourth game in the main series, Counter-Strike: Global Offensive, was released by Valve in 2012 for Windows, OS X, Xbox 360, and PlayStation 3. Hidden Path Entertainment, who worked on Counter-Strike: Source post-release, helped to develop the game alongside Valve. Counter-Strike 2 was announced in March 2023 and publicly released on September 27, 2023, as a replacement for Global Offensive.There have been several third-party spin-off titles created for Asian markets over the years. These include the Counter-Strike Online series, Counter-Strike Neo, and Counter-Strike Nexon: Studio.', 1),
+('League of Legends (LoL), commonly referred to as League, is a 2009 multiplayer online battle arena video game developed and published by Riot Games. Inspired by Defense of the Ancients, a custom map for Warcraft III, Riots founders sought to develop a stand-alone game in the same genre. Since its release in October 2009, League has been free-to-play and is monetized through purchasable character customization. The game is available for Microsoft Windows and macOS.
+
+In the game, two teams of five players battle in player-versus-player combat, each team occupying and defending their half of the map. Each of the ten players controls a character, known as a "champion", with unique abilities and differing styles of play. During a match, champions become more powerful by collecting experience points, earning gold, and purchasing items to defeat the opposing team. In Leagues main mode, Summoners Rift, a team wins by pushing through to the enemy base and destroying their "Nexus", a large structure located within.
+
+League of Legends has received generally positive reviews; critics have highlighted its accessibility, character designs, and production value. The games long lifespan has resulted in a critical reappraisal, with reviews trending positively; it is considered one of the greatest video games ever made. However, negative and abusive in-game player behavior, criticized since the games early days, persists despite Riots attempts to fix the problem. In 2019, League regularly peaked at eight million concurrent players, and its popularity has led to tie-ins such as music, comic books, short stories, and the animated series Arcane. Its success has spawned several spin-off video games, including League of Legends: Wild Rift, a mobile version; Legends of Runeterra, a digital collectible card game; and Ruined King: A League of Legends Story, a turn-based role-playing game, among others. A massively multiplayer online role-playing game based on the property is in development.
+
+League of Legends is the worlds largest esport, with an international competitive scene consisting of multiple regional leagues that culminate in an annual League of Legends World Championship. The 2019 event registered over 100 million unique viewers, peaking at a concurrent viewership of 44 million during the finals. Domestic and international events have been broadcast on livestreaming websites such as Twitch, YouTube, Bilibili, and the cable television sports channel ESPN', 2)
+
+INSERT INTO gallery (fileName, fileExtension, team_id) VALUES
+('cs1', 'jpg', 1),
+('cs2', 'jpg', 1),
+('cs3', 'jpg', 1),
+('cs4', 'jpg', 1),
+('cs5', 'jpg', 1),
+('cs6', 'jpg', 1);
+
+INSERT INTO gallery (fileName, fileExtension, team_id) VALUES
+('lol1', 'jpg', 2),
+('lol2', 'jpg', 2),
+('lol3', 'jpg', 2),
+('lol4', 'jpg', 2),
+('lol5', 'jpg', 2),
+('lol6', 'jpg', 2);
+
+INSERT INTO announcement (title, content, game_id) VALUES 
+('title', 'content', 1),
+('title', 'content', 1),
+('title', 'content', 1),
+('title', 'content', 1),
+('title', 'content', 1);
+
+INSERT INTO announcement (title, content, game_id) VALUES 
+('title', 'content', 2),
+('title', 'content', 2),
+('title', 'content', 2),
+('title', 'content', 2),
+('title', 'content', 2);
+
+INSERT INTO announcement (title, content, game_id) VALUES 
+('Securing a Spot in the EPL Semis After Taking Down Liquid', ' <h3>Miracle Deagle Rounds </h3>
+</p>Liquid got one of their best maps, Inferno, on which they have an 81.8% win rate. The opponents looked confident during the initial rounds on their T-side, getting a 0-3 lead, but round four saw the Danish captain strike back with the AWP, earning their first round.
+
+Two rounds later, Nicolai "dev1ce" Reedtz kicked off a crucial retake with deagles on B. It bounced back and forth, but the international roster led 5-7 into the second half.
+
+The Danish T-side began well as they quickly claimed an 8-7 lead, and from there, dominated the second half, winning the map 13-9.
+
+Before the match, Casper "Ruggah" Due spoke on Astralis map pool and mentioned that some of their strong ones have yet to be played much in official matches - it seems like Inferno is one of them.</p>', 1);

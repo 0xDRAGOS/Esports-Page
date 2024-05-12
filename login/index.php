@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("SQL error: " . $mysqli->error);
     }
 
-    $stmt->bind_param("s", $_POST["email"]);
+    $stmt->bind_param("s", $_GET["email"]);
 
     if (!$stmt->execute()) {
         die("Execution failed: " . $stmt->error);
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } 
     
     if ($user) {
-        if (password_verify($_POST["password"], $user["password_hash"])) {
+        if (password_verify($_GET["password"], $user["password_hash"])) {
             if ($user["isAdmin"] == true) {
                 $is_admin = true;
                 $_SESSION["isAdmin"] = true;
@@ -54,7 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydra Esports</title>
-    <link rel="stylesheet" href="style.css" 
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../site-structure/css/style.css">
 </head>
 <body>
     <?php include "../site-structure/header.php" ?>

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydra Esports</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../site-structure/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../site-structure/css/style.css">
 </head>
 <body>
     <?php include "../site-structure/header.php" ?>
@@ -24,13 +24,13 @@
             </a>
         </div>
         <div id="announcements" class="announcements">
-            <a href="announcements.php">EXPLORE OUR
+            <a href="../announcements/index.php">EXPLORE OUR
                 <br>LATEST
                 <br>NEWS
             </a>
         </div>
         <div id="gallery" class="gallery">
-            <a href="gallery.php">TAKE AN EYE
+            <a href="../gallery/index.php">TAKE AN EYE
                 <br>ON OUR
                 <br>PHOTOS
             </a>

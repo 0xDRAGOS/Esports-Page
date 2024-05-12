@@ -1,0 +1,269 @@
+.content .container {
+    background-image: url("../images/hydra_pc.jpeg");
+    height: 500px;
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+}
+
+h1 {
+    color: var(--white);
+    margin-left: 2rem;
+    font-size: 150px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    color: var(--white);
+    text-transform: none;
+}
+
+.teams-container {
+    padding: 4rem;
+    width: 100%;
+    display: flex;
+    background-color: var(--light-background-color);
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.buttons-container {
+    display: flex;
+}
+
+.add-game-button,
+.add-player-button,
+.add-team-button,
+.delete-game-button,
+.update-game-button,
+.delete-team-button,
+.update-team-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.add-game-button button,
+.add-player-button button,
+.add-team-button button,
+.delete-game-button button,
+.update-game-button button,
+.delete-team-button button,
+.update-team-button button {
+    display: grid;
+    justify-content: center;
+    margin-left: 1.5rem;
+    padding: 1.5rem 3rem; 
+    color: var(--background-color);
+    background-color: var(--white); 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+}
+
+.add-game-button button:hover,
+.add-player-button button:hover,
+.add-team-button button:hover,
+.delete-game-button button:hover,
+.update-game-button button:hover,
+.delete-team-button button:hover,
+.update-team-button button:hover {
+    color: var(--background-color);
+    background-color: var(--hover-color); 
+}
+
+.add-game-modal,
+.add-player-modal,
+.add-team-modal,
+.update-game-modal,
+.update-player-modal,
+.update-team-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: var(--box-shadow);
+}
+
+.modal-content {
+    background-color: var(--light-background-color);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid var(--box-shadow);
+    border-radius: 10px;
+    width: 80%; 
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.close {
+    display: grid;
+    color: var(--white);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: var(--hover-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fullname,
+.birthday,
+.nationality,
+.position,
+.game,
+.name,
+.founded,
+.team,
+.alias {
+    display: grid;
+    grid-template-columns: 40rem;
+    gap: 1rem;
+}
+
+label {
+    display: grid;
+    justify-content: center;
+    color:var(--white);
+    padding: 1rem;
+    font-size: 25px;
+}
+
+input, select {
+    text-transform: none;
+    border-radius: 10px;
+    width: 100%;
+    padding: 1rem; 
+}
+
+.add-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+    
+.add-button button {
+    display: grid;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1.5rem 3rem; 
+    color: var(--background-color);
+    background-color: var(--white); 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+}
+
+.add-button button:hover {
+    color: var(--background-color);
+    background-color: var(--hover-color); 
+}
+
+.teams-view {
+    display: flex;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.team-details {
+    display: flex;
+}
+
+.team-players {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player-box {
+    display: flex;
+    align-items: center;
+    text-transform: none;
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-right: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--white);
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.player-box h3 {
+    font-size: 25px;
+    text-transform: none;
+}
+
+.player-box h4 {
+    font-size: 15px;
+    text-transform: none;
+}
+
+hr {
+    border: 1px solid var(--box-shadow);
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+.delete-player-button,
+.update-player-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.delete-player-button button,
+.update-player-button button {
+    display: grid;
+    justify-content: center;
+    padding: 1.5rem 3rem; 
+    color: var(--background-color);
+    background-color: var(--white); 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+}
+
+.delete-player-button button:hover,
+.update-player-button button:hover {
+    color: var(--background-color);
+    background-color: var(--hover-color); 
+}
+
+@media screen and (max-width: 768px) {
+    .player-box {
+        flex: 1 1 calc(50% - 1.5rem); /* Set width of player boxes to occupy 50% of the container on smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .player-box {
+        flex: 1 1 calc(100% - 1.5rem); /* Set width of player boxes to occupy 100% of the container on even smaller screens */
+    }
+}

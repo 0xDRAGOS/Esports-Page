@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydra Esports</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../site-structure/style.css">
-    <script src="delete-modals.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../site-structure/css/style.css">
 </head>
+
 <body>
     <?php include "../site-structure/header.php" ?>
 
     <div class="content">
         <div class="container">
-                <h1>TEAMS</h1>
-            </div>
+            <h1>TEAMS</h1>
+        </div>
 
         <div class="teams-container">
             <div class="buttons-container">
-                <?php //if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"]): ?> 
-                    <div class="add-game-button">
-                        <button onclick="openAddGameModal()">Add Game</button>
-                    </div>
-                    
-                    <div class="add-team-button">
-                        <button onclick="openAddTeamModal()">Add Team</button>
-                    </div>
+                <?php //if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"]): ?>
+                <div class="add-game-button">
+                    <button onclick="openAddGameModal()">Add Game</button>
+                </div>
 
-                    <div class="add-player-button">
-                        <button onclick="openAddPlayerModal()">Add Player</button>
-                    </div>
+                <div class="add-team-button">
+                    <button onclick="openAddTeamModal()">Add Team</button>
+                </div>
+
+                <div class="add-player-button">
+                    <button onclick="openAddPlayerModal()">Add Player</button>
+                </div>
                 <?php //endif; ?>
             </div>
-            
+
             <div id="add-game-modal" class="add-game-modal">
                 <div class="modal-content">
                     <span class="close" onclick="closeAddGameModal()">&times;</span>
@@ -48,7 +49,7 @@
                                 <button>Add</button>
                             </div>
                         </form>
-                    </div>     
+                    </div>
                 </div>
             </div>
 
@@ -63,7 +64,7 @@
                                     <label for="firstName">First Name</label>
                                     <input type="text" id="firstName" name="firstName">
                                 </div>
-                        
+
                                 <div>
                                     <label for="lastName">Last Name</label>
                                     <input type="text" id="lastName" name="lastName">
@@ -93,20 +94,20 @@
                             <div class="team">
                                 <label for="team">Team</label>
                                 <select name="team" id="team">
-                                <?php 
-                                        $mysqli = require "../database/database.php"; 
-                                        $sql = "SELECT id, name FROM team";
-                                        $result = $mysqli->query($sql);
+                                    <?php
+                                    $mysqli = require "../database/database.php";
+                                    $sql = "SELECT id, name FROM team";
+                                    $result = $mysqli->query($sql);
 
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
-                                            }
-                                        } else {
-                                            echo "0 results";
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
                                         }
+                                    } else {
+                                        echo "0 results";
+                                    }
 
-                                        $mysqli->close();
+                                    $mysqli->close();
                                     ?>
                                 </select>
                             </div>
@@ -115,7 +116,7 @@
                                 <button>Add</button>
                             </div>
                         </form>
-                    </div>     
+                    </div>
                 </div>
             </div>
 
@@ -138,20 +139,20 @@
                             <div class="game">
                                 <label for="game">Game</label>
                                 <select name="game" id="game">
-                                    <?php 
-                                        $mysqli = require "../database/database.php"; 
-                                        $sql = "SELECT id, name FROM game";
-                                        $result = $mysqli->query($sql);
+                                    <?php
+                                    $mysqli = require "../database/database.php";
+                                    $sql = "SELECT id, name FROM game";
+                                    $result = $mysqli->query($sql);
 
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
-                                            }
-                                        } else {
-                                            echo "0 results";
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
                                         }
+                                    } else {
+                                        echo "0 results";
+                                    }
 
-                                        $mysqli->close();
+                                    $mysqli->close();
                                     ?>
                                 </select>
                             </div>
@@ -160,86 +161,219 @@
                                 <button>Add</button>
                             </div>
                         </form>
-                    </div>     
+                    </div>
+                </div>
+            </div>
+
+            <div id="update-game-modal" class="update-game-modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeUpdateGameModal()">&times;</span>
+                    <h2>Update Game</h2>
+                    <div class="form">
+                        <form action="process-update-game.php" method="POST">
+                            <input type="hidden" id="gameId" name="gameId" value="">
+                            <div class="name">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" value="">
+                            </div>
+
+                            <div class="update-game-button">
+                                <button>Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="update-player-modal" class="update-player-modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeUpdatePlayerModal()">&times;</span>
+                    <h2>Update Player</h2>
+                    <div class="form">
+                        <form action="process-update-player.php" method="POST">
+                            <input type="hidden" id="playerId" name="playerId" value="">
+                            <div class='fullname'>
+                                <div>
+                                    <label for='firstName'>First Name</label>
+                                    <input type='text' id='firstName' name='firstName' value=''>
+                                </div>
+                                <div>
+                                    <label for='lastName'>Last Name</label>
+                                    <input type='text' id='lastName' name='lastName' value=''>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for='birthday'>Birthday</label>
+                                <input type='date' id='birthday' name='birthday' value=''>
+                            </div>
+
+                            <div>
+                                <label for='nationality'>Nationality</label>
+                                <input type='text' id='nationality' name='nationality' value=''>
+                            </div>
+
+                            <div>
+                                <label for='alias'>Alias</label>
+                                <input type='text' id='alias' name='alias' value=''>
+                            </div>
+
+                            <div>
+                                <label for='position'>Position</label>
+                                <input type='text' id='position' name='position' value=''>
+                            </div>
+
+                            <div>
+                                <label for='team'>Team</label>
+                                <select name="team" id="team">
+                                    <?php
+                                    $mysqli = require "../database/database.php";
+                                    $sql = "SELECT id, name FROM team";
+                                    $result = $mysqli->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
+                                        }
+                                    } else {
+                                        echo "0 results";
+                                    }
+
+                                    $mysqli->close();
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="update-player-button">
+                                <button>Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="update-team-modal" class="update-team-modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeUpdateTeamModal()">&times;</span>
+                    <h2>Update Team</h2>
+                    <div class="form">
+                        <form action="process-update-team.php" method="POST">
+                            <input type="hidden" id="teamId" name="teamId" value="">
+                            <div class="name">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name">
+                            </div>
+
+                            <div class="founded">
+                                <label for="founded">Founded</label>
+                                <input type="date" id="founded" name="founded">
+                            </div>
+
+                            <div class="game">
+                                <label for="game">Game</label>
+                                <select name="game" id="game">
+                                    <?php
+                                    $mysqli = require "../database/database.php";
+                                    $sql = "SELECT id, name FROM game";
+                                    $result = $mysqli->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
+                                        }
+                                    } else {
+                                        echo "0 results";
+                                    }
+
+                                    $mysqli->close();
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="update-team-button">
+                                <button>Update</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
             <div class="teams-view">
-                <?php 
-                    $mysqli = require "../database/database.php"; 
-                    $sql = "SELECT player.id, player.firstName, player.lastName, player.aliasName, player.birthday, player.nationality, player.position, team.name as teamName, game.name as gameName, team.id as teamId, game.id as gameId
+                <?php
+                $mysqli = require "../database/database.php";
+                $sql = "SELECT player.id, player.firstName, player.lastName, player.aliasName, player.birthday, player.nationality, player.position, team.name as teamName, game.name as gameName, team.id as teamId, game.id as gameId
                             FROM player
                             JOIN team ON player.team_id = team.id
                             JOIN game ON team.game_id = game.id;";
-                    $result = $mysqli->query($sql);
+                $result = $mysqli->query($sql);
 
-                    $currentTeam = null;
+                $currentTeam = null;
 
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            $birthdate = new DateTime($row["birthday"]);
-                            $currentDate = new DateTime();
-                            $age = $currentDate->diff($birthdate)->y;
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $birthdate = new DateTime($row["birthday"]);
+                        $currentDate = new DateTime();
+                        $age = $currentDate->diff($birthdate)->y;
 
-                            if ($currentTeam !== $row["teamName"]) {
-                                if ($currentTeam !== null) {
-                                    echo "<hr>";
-                                }
-
-                                echo "<div class='team-details'>";
-                                    echo "<h2>" . $row["gameName"] . " - " . $row["teamName"] . "</h2>";
-                                echo "</div>";
-
-                                    echo "<div class='delete-game-button'>";
-                                        echo "<button onclick='openDeleteGameModal(\"" . $row['gameId'] . "\")'>Delete Game</button>";
-                                    echo "</div>";
-
-                                    echo "<div class='update-game-button'>";
-                                        echo "<button>Update Game</button>";
-                                    echo "</div>";
-
-                                    echo "<div class='delete-team-button'>";
-                                        echo "<button onclick='openDeleteTeamModal(\"" . $row['teamId'] . "\")'>Delete Team</button>";
-                                    echo "</div>";
-
-                                    echo "<div class='update-team-button'>";
-                                        echo "<button>Update Team</button>";
-                                    echo "</div>";
-                                
-                                $currentTeam = $row["teamName"];
-                                echo "<div class='team-players'>";
+                        if ($currentTeam !== $row["teamName"]) {
+                            if ($currentTeam !== null) {
+                                echo "<hr>";
                             }
 
-                                echo "<div class='player-box'>";
-                                    echo "<h3>" . $row["aliasName"] . "</h3>";
-                                    echo "<h4>" . $row["firstName"] . " " . $row["lastName"] . "</h4>";
-                                    echo "<h4>" . $row["nationality"] . "</h4>";
-                                    echo "<h4>" . $age . " years" .  "</h4>";
-                                    echo "<h4>" . $row["position"] . "</h4>";
+                            echo "<div class='team-details'>";
+                            echo "<h2>" . $row["gameName"] . " - " . $row["teamName"] . "</h2>";
+                            echo "</div>";
 
-                                    echo "<div class='delete-player-button'>";
-                                        echo "<button onclick='openDeletePlayerModal(\"" . $row['id'] . "\")'>Delete</button>";
-                                    echo "</div>";
+                            echo "<div class='delete-game-button'>";
+                            echo "<button onclick='openDeleteGameModal(\"" . $row['gameId'] . "\")'>Delete Game</button>";
+                            echo "</div>";
 
-                                    echo "<div class='update-player-button'>";
-                                        echo "<button>Update</button>";
-                                    echo "</div>";
+                            echo "<div class='update-game-button'>";
+                            echo "<button onclick='openUpdateGameModal(\"" . $row['gameId'] . "\")'>Update Game</button>";
+                            echo "</div>";
 
-                                echo "</div>";
+                            echo "<div class='delete-team-button'>";
+                            echo "<button onclick='openDeleteTeamModal(\"" . $row['teamId'] . "\")'>Delete Team</button>";
+                            echo "</div>";
+
+                            echo "<div class='update-team-button'>";
+                            echo "<button onclick='openUpdateTeamModal(\"" . $row['teamId'] . "\")'>Update Team</button>";
+                            echo "</div>";
+
+                            $currentTeam = $row["teamName"];
+                            echo "<div class='team-players'>";
                         }
-                        echo "</div>";
-                        echo "<hr>";
-                    } else {
-                        echo "0 results";
-                    }
 
-                    $mysqli->close();
-                ?>      
+                        echo "<div class='player-box'>";
+                        echo "<h3>" . $row["aliasName"] . "</h3>";
+                        echo "<h4>" . $row["firstName"] . " " . $row["lastName"] . "</h4>";
+                        echo "<h4>" . $row["nationality"] . "</h4>";
+                        echo "<h4>" . $age . " years" . "</h4>";
+                        echo "<h4>" . $row["position"] . "</h4>";
+
+                        echo "<div class='delete-player-button'>";
+                        echo "<button onclick='openDeletePlayerModal(" . $row['id'] . ")'>Delete</button>";
+                        echo "</div>";
+
+                        echo "<div class='update-player-button'>";
+                        echo "<button onclick='openUpdatePlayerModal(" . $row['id'] . ")'>Update</button>";
+                        echo "</div>";
+
+                        echo "</div>";
+                    }
+                    echo "</div>";
+                    echo "<hr>";
+                } else {
+                    echo "0 results";
+                }
+
+                $mysqli->close();
+                ?>
             </div>
         </div>
     </div>
 
     <?php include "../site-structure/footer.html" ?>
-    <script src="modals.js"></script>
+    <script src="./js/modals.js"></script>
 </body>
+
 </html>

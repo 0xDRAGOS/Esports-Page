@@ -1,0 +1,60 @@
+.content .container {
+    background-image: url("../images/hydra_blue.jpeg");
+    height: 500px;
+    align-content: center;
+    background-color: var(--light-background-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 500px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: var(--box-shadow);
+    align-items: center;
+}
+
+h1 {
+    color: var(--white);
+    margin-left: 2rem;
+    font-size: 150px;
+}
+
+h2 {
+    color: var(--white);
+    font-size: 50px;
+}
+
+h4 {
+    font-size: 20px;
+    text-transform: none;
+    color: var(--white);
+}
+
+hr {
+    border: 2px solid var(--white);
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+}
+
+.sections-container {
+    padding: 4rem;
+    width: 100%;
+    display: flex;
+    background-color: var(--light-background-color);
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.section {
+    background-color: var(--background-color);
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.game-details {
+    margin-bottom: 2rem;
+}
