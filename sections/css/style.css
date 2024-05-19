@@ -1,5 +1,5 @@
 .content .container {
-    background-image: url("../images/hydra_blue.jpeg");
+    background-image: var(--hydra-img);
     height: 500px;
     align-content: center;
     background-color: var(--light-background-color);

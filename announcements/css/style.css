@@ -1,5 +1,5 @@
 .content .container {
-    background-image: url("../images/news.jpg");
+    background-image: var(--news-img);
     height: 500px;
     align-content: center;
     background-color: var(--light-background-color);

@@ -1,5 +1,5 @@
 .content .container {
-    background-image: url("../images/hydra_pc.jpeg");
+    background-image: var(--teams-img);
     height: 500px;
     align-content: center;
     background-color: var(--light-background-color);

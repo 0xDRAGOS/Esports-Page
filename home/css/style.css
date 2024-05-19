@@ -1,85 +1,55 @@
-/* @import "../site-structure/style.css"; */
 
-
-.content {
-  justify-content: center;
+@keyframes slideInFromLeft {
+  0% {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
 }
 
-.content a{
+.content a {
   display: flex;
   font-size: 90px;
   margin-left: 2rem;
   text-align: left;
   align-items: center;
-  color: var(--white)
+  color: var(--white);
+  animation: slideInFromLeft 1s;
+}
+
+
+.sections, .teams, .announcements, .gallery, .contact {
+  align-content: center;
+  background-color: var(--light-background-color);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  height: 500px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: var(--box-shadow);
+  align-items: center;
 }
 
 .sections {
-  align-content: center;
-  background-color: var(--light-background-color);
-  background-image: url("../images/hydra_blue.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  height: 500px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  box-shadow: var(--box-shadow);
-  align-items: center;
+  background-image: var(--hydra-img);
 }
 
 .teams {
-  align-content: center;
-  background-color: var(--light-background-color);
-  background-image: url("../images/hydra_pc.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  height: 500px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  box-shadow: var(--box-shadow);
-  align-items: center;
+  background-image: var(--teams-img);
 }
 
 .announcements {
-  align-content: center;
-  background-color: var(--light-background-color);
-  background-image: url("../images/news.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  height: 500px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  box-shadow: var(--box-shadow);
-  align-items: center;
+  background-image: var(--news-img);
 }
 
 .gallery {
-  align-content: center;
-  background-color: var(--light-background-color);
-  background-image: url("../images/hydra_gallery.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  height: 500px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  box-shadow: var(--box-shadow);
-  align-items: center;
+  background-image: var(--gallery-img);
 }
 
 .contact {
-  align-content: center;
-  background-color: var(--light-background-color);
-  background-image: url("../images/hydra_contact.jpeg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  height: 500px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  box-shadow: var(--box-shadow);
-  align-items: center;
+  background-image: var(--contact-img);
 }

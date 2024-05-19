@@ -1,7 +1,5 @@
-@import "../variables/variables.css";
-
 .content .container {
-    background-image: url("../images/hydra_contact.jpeg");
+    background-image: var(--contact-img);
     height: 500px;
     align-content: center;
     background-color: var(--light-background-color);
@@ -22,6 +20,7 @@ h1 {
 }
 
 .contact {
+    background-image: var(--animated-background-img);
     padding: 4rem;
     width: 100%;
     display: flex;
