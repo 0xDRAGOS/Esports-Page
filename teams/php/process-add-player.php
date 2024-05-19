@@ -51,7 +51,7 @@ $stmt->bind_param("ssssssi",
                     );
 
 if ($stmt->execute()) {
-    header("Location: ../teams/index.php");
+    header("Location: ../index.php");
     exit;
 } 
 ?>

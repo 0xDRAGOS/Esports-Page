@@ -5,6 +5,8 @@
     --hover-color: #808080;
     --box-shadow: #0000001a;
     --white: #f5f5f5;
+    --red: rgba(255, 0, 0, 0.8);
+    --light-red: rgba(255, 0, 0, 0.3);
     --logo-img: url("../../images/logo.png");
     --background-img: url("../../images/background.jpg");
     --animated-background-img: url("../../images/animated_background.svg");

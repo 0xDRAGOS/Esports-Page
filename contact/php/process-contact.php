@@ -2,20 +2,24 @@
 session_start();
 
 
-if (empty($_GET["firstName"])) {
+if (empty($_POST["firstName"])) {
     die("First Name is required!");
 }
 
-if (empty($_GET["lastName"])) {
+if (empty($_POST["lastName"])) {
     die("Last Name is required!");
 }
 
-if (!filter_var($_GET["email"], FILTER_VALIDATE_EMAIL)) {
+if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
     die("Valid email is required!");
 }
 
-if (empty($_GET["message"])) {
+if (empty($_POST["message"])) {
     die("Message is required!");
+}
+
+if (strlen($_POST['message']) < 50) {
+    die("Your message should be atleast 50 characters.");
 }
 
 
@@ -30,15 +34,15 @@ if (!$stmt->prepare($sql)) {
 }
 
 $stmt->bind_param("ssss",
-                    $_GET["firstName"],
-                    $_GET["lastName"],
-                    $_GET["email"],
-                    $_GET["message"]
+                    $_POST["firstName"],
+                    $_POST["lastName"],
+                    $_POST["email"],
+                    $_POST["message"]
                     );
 
 if ($stmt->execute()) {
     $_SESSION['success'] = true;
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 ?>

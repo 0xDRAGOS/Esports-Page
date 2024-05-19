@@ -16,8 +16,11 @@ if (empty($_POST["game"])) {
     die("Game id is required!");
 }
 
-$targetDir = "images/";
-$targetFile = $targetDir . basename($_FILES["cover-image"]["name"]);
+$targetDir = "../images/";
+$imageFileType = strtolower(pathinfo($_FILES["cover-image"]["name"], PATHINFO_EXTENSION));
+$title = $_POST["title"];
+$targetFile = $targetDir . $title . "." . $imageFileType;
+
 
 if ($_FILES["cover-image"]["error"] != UPLOAD_ERR_OK) {
     die("File upload error: " . $_FILES["cover-image"]["error"]);
@@ -37,15 +40,16 @@ if (!$stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
 }
 
+$targetFileDatabase = "images/" . $title . "." . $imageFileType;
 $stmt->bind_param("sssi",
                     $_POST["title"],
                     $_POST["content"],
-                    $targetFile,
+                    $targetFileDatabase,
                     $_POST["game"]
                     );
 
 if ($stmt->execute()) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 } 
 

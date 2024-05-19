@@ -16,18 +16,15 @@ function openUpdateAnnouncementModal(announcementId) {
   updateAnnouncementModal.style.display = "block";
 
   const xhr = new XMLHttpRequest();
-  console.log(announcementId);
   xhr.open(
     "GET",
-    `../php/process-get-announcement.php?announcementId=${announcementId}`
+    `./php/process-get-announcement.php?announcementId=${announcementId}`
   );
 
   xhr.onload = function () {
     if (xhr.status >= 200 && xhr.status < 300) {
-      console.log(xhr.status, xhr.statusText);
-      console.log("Cererea a fost transmisă cu succes!");
       var response = JSON.parse(xhr.responseText);
-      console.log(response);
+
       updateAnnouncementModal.querySelector("#announcementId").value = response["id"];
       updateAnnouncementModal.querySelector("#title").value = response["title"];
       updateAnnouncementModal.querySelector("#content").value =
@@ -66,26 +63,23 @@ function openDeleteAnnouncementModal(announcementId) {
   );
   if (confirmDelete) {
     window.location.href =
-      "../php/process-delete-announcement.php?id=" + announcementId;
+      "php/process-delete-announcement.php?id=" + announcementId;
   }
 }
 
 function loadAnnouncements(gameId) {
   const xhr = new XMLHttpRequest();
-  console.log(gameId);
 
-  xhr.open("GET", `../php/process-get-announcements-by-game.php?gameId=${gameId}`);
+  xhr.open("GET", `./php/process-get-announcements-by-game.php?gameId=${gameId}`);
 
   xhr.onload = function () {
     if (xhr.status >= 200 && xhr.status < 300) {
-      console.log(xhr.status, xhr.statusText);
-      console.log("Cererea a fost transmisă cu succes!");
       var response = JSON.parse(xhr.responseText);
-      console.log(response);
+
       var announcementsList = document.getElementById("announcements-list");
       announcementsList.innerHTML = "";
 
-      response.forEach(function (announcement) {
+      response.announcements.forEach(function (announcement) {
         var announcementCard = document.createElement("div");
         announcementCard.classList.add("announcement-card");
 
@@ -104,31 +98,35 @@ function loadAnnouncements(gameId) {
         var content = document.createElement("p");
         content.textContent = announcement.content;
 
-        var deleteButton = document.createElement("div");
-        deleteButton.classList.add("delete-announcement-button");
-        var deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-        deleteBtn.onclick = function () {
-          openDeleteAnnouncementModal(announcement.id);
-        };
-        deleteButton.appendChild(deleteBtn);
-
-        var updateButton = document.createElement("div");
-        updateButton.classList.add("update-announcement-button");
-        var updateBtn = document.createElement("button");
-        updateBtn.textContent = "Update";
-        updateBtn.onclick = function () {
-          openUpdateAnnouncementModal(announcement.id);
-        };
-        updateButton.appendChild(updateBtn);
-
         imageBox.appendChild(image);
         announcementCard.appendChild(imageBox);
         announcementCard.appendChild(title);
         announcementCard.appendChild(hr);
         announcementCard.appendChild(content);
-        announcementCard.appendChild(deleteButton);
-        announcementCard.appendChild(updateButton);
+
+        if (response.isAdmin) {
+          var deleteButton = document.createElement("div");
+          deleteButton.classList.add("delete-announcement-button");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "Delete";
+          deleteBtn.onclick = function () {
+            openDeleteAnnouncementModal(announcement.id);
+          };
+          deleteButton.appendChild(deleteBtn);
+
+          var updateButton = document.createElement("div");
+          updateButton.classList.add("update-announcement-button");
+          var updateBtn = document.createElement("button");
+          updateBtn.textContent = "Update";
+          updateBtn.onclick = function () {
+            openUpdateAnnouncementModal(announcement.id);
+          };
+          updateButton.appendChild(updateBtn);
+
+          announcementCard.appendChild(deleteButton);
+          announcementCard.appendChild(updateButton);
+        }
+
         announcementsList.appendChild(announcementCard);
       });
     } else {
@@ -138,6 +136,7 @@ function loadAnnouncements(gameId) {
 
   xhr.send();
 }
+
 
 function loadAllAnnouncements() {
   const xhr = new XMLHttpRequest();
@@ -146,14 +145,12 @@ function loadAllAnnouncements() {
 
   xhr.onload = function () {
     if (xhr.status >= 200 && xhr.status < 300) {
-      console.log(xhr.status, xhr.statusText);
-      console.log("Cererea a fost transmisă cu succes!");
       var response = JSON.parse(xhr.responseText);
-      console.log(response);
+
       var announcementsList = document.getElementById("announcements-list");
       announcementsList.innerHTML = "";
 
-      response.forEach(function (announcement) {
+      response.announcements.forEach(function (announcement) {
         var announcementCard = document.createElement("div");
         announcementCard.classList.add("announcement-card");
 
@@ -172,31 +169,35 @@ function loadAllAnnouncements() {
         var content = document.createElement("p");
         content.textContent = announcement.content;
 
-        var deleteButton = document.createElement("div");
-        deleteButton.classList.add("delete-announcement-button");
-        var deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-        deleteBtn.onclick = function () {
-          openDeleteAnnouncementModal(announcement.id);
-        };
-        deleteButton.appendChild(deleteBtn);
-
-        var updateButton = document.createElement("div");
-        updateButton.classList.add("update-announcement-button");
-        var updateBtn = document.createElement("button");
-        updateBtn.textContent = "Update";
-        updateBtn.onclick = function () {
-          openUpdateAnnouncementModal(announcement.id);
-        };
-        updateButton.appendChild(updateBtn);
-
         imageBox.appendChild(image);
         announcementCard.appendChild(imageBox);
         announcementCard.appendChild(title);
         announcementCard.appendChild(hr);
         announcementCard.appendChild(content);
-        announcementCard.appendChild(deleteButton);
-        announcementCard.appendChild(updateButton);
+
+        if (response.isAdmin) {
+          var deleteButton = document.createElement("div");
+          deleteButton.classList.add("delete-announcement-button");
+          var deleteBtn = document.createElement("button");
+          deleteBtn.textContent = "Delete";
+          deleteBtn.onclick = function () {
+            openDeleteAnnouncementModal(announcement.id);
+          };
+          deleteButton.appendChild(deleteBtn);
+
+          var updateButton = document.createElement("div");
+          updateButton.classList.add("update-announcement-button");
+          var updateBtn = document.createElement("button");
+          updateBtn.textContent = "Update";
+          updateBtn.onclick = function () {
+            openUpdateAnnouncementModal(announcement.id);
+          };
+          updateButton.appendChild(updateBtn);
+
+          announcementCard.appendChild(deleteButton);
+          announcementCard.appendChild(updateButton);
+        }
+
         announcementsList.appendChild(announcementCard);
       });
     } else {
@@ -206,3 +207,4 @@ function loadAllAnnouncements() {
 
   xhr.send();
 }
+

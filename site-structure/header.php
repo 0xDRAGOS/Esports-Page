@@ -1,20 +1,16 @@
 <?php
-
-session_start();
-
-if (isset($_SESSION["user_id"])) {
-
-    $mysqli = require "../database/database.php";
-
-    $sql = "SELECT * FROM user WHERE id = {$_SESSION["user_id"]}";
-
-    $result = $mysqli->query($sql);
-
-    $user = $result->fetch_assoc();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
-?>
+if (isset($_GET['action']) && $_GET['action'] === 'logout') {
+    session_unset();
+    session_destroy();
 
+    header('Location: ../home/index.php');
+    exit();
+}
+?>
 <div class="header">
     <nav class="navbar">
         <a href="../home/index.php"><img src="../images/logo.png" alt="Hydra Esport Logo" class="logo"></a>
@@ -22,22 +18,28 @@ if (isset($_SESSION["user_id"])) {
         <a href="../sections/index.php">SECTIONS</a>
         <a href="../teams/index.php">TEAMS</a>
         <a href="../announcements/index.php">ANNOUNCEMENTS</a>
-        <a href="../gallery/index.php">GALLERY</a>
-        <a href="../contact/index.php">CONTACT</a>
 
-        <?php if (isset($user)): ?>
-
-            <div class="logout-button">
-                <a href="">Hello, <?= $user["firstName"] ?>     <?= $user["lastName"] ?>!</a>
-                <a href="../login/logout.php">LOGOUT</a>
-            </div>
-
+        <?php if (isset($_SESSION['user'])): ?> 
+            <a href="../gallery/index.php">GALLERY</a>
         <?php else: ?>
+            <a href="../login/index.php">GALLERY</a>
+        <?php endif; ?>
 
+        <?php if (isset($_SESSION['user'])): ?> 
+            <a href="../contact/index.php">CONTACT</a>
+        <?php else: ?>
+            <a href="../login/index.php">CONTACT</a>
+        <?php endif; ?>
+
+        <?php if (isset($_SESSION['user']) && $_SESSION['user']['loggedIn']): ?>
+            <div class="logout-button">
+                <a href="">Hello, <?= htmlspecialchars($_SESSION['user']["firstName"]) ?> <?= htmlspecialchars($_SESSION['user']["lastName"]) ?>!</a>
+                <a href="?action=logout">LOGOUT</a>
+            </div>
+        <?php else: ?>
             <div class="login-button">
                 <a href="../login/index.php">LOGIN</a>
             </div>
-
         <?php endif; ?>
     </nav>
 </div>

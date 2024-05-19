@@ -188,6 +188,7 @@ input, select {
 
 .team-details {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .team-players {

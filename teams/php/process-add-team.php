@@ -31,7 +31,7 @@ $stmt->bind_param("ssi",
                     );
 
 if ($stmt->execute()) {
-    header("Location: ../teams/index.php");
+    header("Location: ../index.php");
     exit;
 } 
 

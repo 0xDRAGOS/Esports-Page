@@ -12,33 +12,33 @@
 
     <div class="content">
         <h1>Signup</h1>
-        <form action="process-signup.php" method="POST">
+        <form id="signup-form" action="./php/process-signup.php" method="POST" onsubmit="return validateSignup()">
             <div class="fullname">
                 <div>
                     <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName">
+                    <input type="text" id="firstName" name="firstName" required minlength="3" maxlength="128">
                 </div>
                 
                 <div>
                     <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName">
+                    <input type="text" id="lastName" name="lastName" required minlength="3" maxlength="128">
                 </div>
             </div>
             
             <div class="email">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" autocapitalize="off">
+                <input type="text" id="email" name="email" autocapitalize="off" required maxlength="255">
             </div>
 
             <div class="password">
                 <div>
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required maxlength="255">
                 </div>
 
                 <div>
                     <label for="password_confirmation">Confirm Password</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation">
+                    <input type="password" id="password_confirmation" name="password_confirmation" required maxlength="255">
                 </div>
             </div>
             <div class="signup-button">
@@ -48,5 +48,7 @@
     </div>
 
     <?php include "../site-structure/footer.html" ?>
+    <script src="./js/validation.js"></script>
+    <script src="../validation/validation.js"></script>
 </body>
 </html>

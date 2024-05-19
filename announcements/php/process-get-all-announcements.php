@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $mysqli = require "../../database/database.php";
     $sql = "SELECT id, title, content, cover_image FROM announcement";
     $stmt = $mysqli->prepare($sql);
@@ -18,7 +20,13 @@
         $announcements[] = $announcementObj;
     }
     
-    echo json_encode($announcements);
+    $response = [
+        'announcements' => $announcements,
+        'isAdmin' => isset($_SESSION['user']) && $_SESSION['user']['isAdmin'] == 1
+    ];
+
+    echo json_encode($response);
+
 
     $stmt->close();
     $mysqli->close();

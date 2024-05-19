@@ -53,7 +53,7 @@ if (isset($_POST['playerId']) && is_numeric($_POST['playerId'])) {
     $stmt->bind_param("ssdsssii", $firstName, $lastName, $birthday, $nationality, $alias, $position, $teamId, $playerId);
 
     if ($stmt->execute()) {
-        header("Location: index.php");
+        header("Location: ../index.php");
         exit;
     } else {
         echo "Update failed: " . $mysqli->error;

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if(isset($_GET['gameId']) && !empty($_GET['gameId'])) {
     $gameId = $_GET['gameId'];
@@ -23,7 +24,12 @@ if(isset($_GET['gameId']) && !empty($_GET['gameId'])) {
         $announcements[] = $announcementObj;
     }
 
-    echo json_encode($announcements);
+    $response = [
+        'announcements' => $announcements,
+        'isAdmin' => isset($_SESSION['user']) && $_SESSION['user']['isAdmin'] == 1
+    ];
+
+    echo json_encode($response);
 
     $stmt->close();
     $mysqli->close();

@@ -21,7 +21,7 @@ if (isset($_POST['gameId']) && is_numeric($_POST['gameId'])) {
     $stmt->bind_param("si", $name, $gameId);
 
     if ($stmt->execute()) {
-        header("Location: index.php");
+        header("Location: ../index.php");
         exit;
     } else {
         echo "Update failed: " . $mysqli->error;

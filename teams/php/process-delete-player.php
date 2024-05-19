@@ -9,7 +9,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
     if ($mysqli->query($sql) === TRUE) {
-        header("Location: index.php");
+        header("Location: ../index.php");
         exit();
     } else {
         echo "Error deleting record: " . $mysqli->error;

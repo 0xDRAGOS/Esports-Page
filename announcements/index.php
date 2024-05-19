@@ -20,20 +20,20 @@
                     <span class="close" onclick="closeAddAnnouncementModal()">&times;</span>
                     <h2>Add Announcement</h2>
                     <div class="form">
-                        <form action="./php/process-add-announcement.php" method="POST" enctype="multipart/form-data">
+                        <form id ="add-announcement-form" action="./php/process-add-announcement.php" method="POST" enctype="multipart/form-data" onsubmit="return validateAddAnnouncement()">
                             <div class="title">
                                 <label for="title">Title</label>
-                                <input type="text" id="title" name="title">
+                                <input type="text" id="title" name="title" required minlength="10" maxlength="255">
                             </div>
 
                             <div class="anno-content">
                                 <label for="content">Content</label>
-                                <input type="text" id="content" name="content">
+                                <input type="text" id="content" name="content" required minlength="50">
                             </div>
 
                             <div class="game">
                                 <label for="game">Game</label>
-                                <select name="game" id="game">
+                                <select name="game" id="game" required>
                                     <?php 
                                         $mysqli = require "../database/database.php"; 
                                         $sql = "SELECT id, name FROM game";
@@ -54,7 +54,7 @@
 
                             <div class="cover-image">
                                 <label for="cover-image">Image</label>
-                                <input type="file" id="cover-image" name="cover-image">
+                                <input type="file" id="cover-image" name="cover-image" accept=".jpg, .jpeg, .png">
                             </div>
 
                             <div class="add-button">
@@ -70,21 +70,21 @@
                     <span class="close" onclick="closeUpdateAnnouncementModal()">&times;</span>
                     <h2>Update Announcement</h2>
                     <div class="form">
-                        <form action="./php/process-update-announcement.php" method="POST" enctype="multipart/form-data">
+                        <form id ="update-announcement-form" action="./php/process-update-announcement.php" method="POST" enctype="multipart/form-data" onsubmit="return validateUpdateAnnouncement()">
                             <input type="hidden" id="announcementId" name="announcementId" value="">
                             <div class="title">
                                 <label for="title">Title</label>
-                                <input type="text" id="title" name="title">
+                                <input type="text" id="title" name="title" required minlength="10" maxlength="255">
                             </div>
 
                             <div class="anno-content">
                                 <label for="content">Content</label>
-                                <input type="text" id="content" name="content">
+                                <input type="text" id="content" name="content" required minlength="50">
                             </div>
 
                             <div class="game">
                                 <label for="game">Game</label>
-                                <select name="game" id="game">
+                                <select name="game" id="game" required>
                                     <?php 
                                         $mysqli = require "../database/database.php"; 
                                         $sql = "SELECT id, name FROM game";
@@ -105,7 +105,7 @@
 
                             <div class="cover-image">
                                 <label for="cover-image">Image</label>
-                                <input type="file" id="cover-image" name="cover-image">
+                                <input type="file" id="cover-image" name="cover-image" accept=".jpg, .jpeg, .png">
                             </div>
 
                             <div class="update-button">
@@ -118,11 +118,11 @@
 
         <div class="announcements-container">
             <div class="buttons-container">
-                <?php //if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"]): ?> 
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['isAdmin']): ?> 
                     <div class="add-announcement-button">
                         <button onclick="openAddAnnouncementModal()">Add Announcement</button>
                     </div>
-                <?php //endif; ?>
+                <?php endif; ?>
             </div>
 
             <div class="games-view">
@@ -159,5 +159,6 @@
 
     <?php include "../site-structure/footer.html" ?>
     <script src="./js/modals.js"></script>
+    <script src="./js/validation.js"></script>
 </body>
 </html>

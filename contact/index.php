@@ -48,6 +48,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="contact-form">
                 <?php if(isset($_SESSION['success']) && $_SESSION['success']): ?>
                     <div class="confirmation-message">
@@ -55,28 +56,28 @@
                         </div>
                         <?php unset($_SESSION['success']); ?>
                 <?php else: ?>
-                    <form action="process-contact.php" method="POST">
+                    <form id="contact-form" action="./php/process-contact.php" method="POST" onsubmit="return validateContact()">
                         <h2>Send Message</h2>
                         <div class="fullname">
                         <div>
                             <label for="firstName">First Name</label>
-                            <input type="text" id="firstName" name="firstName">
+                            <input type="text" id="firstName" name="firstName" required minlength="3" maxlength="128">
                         </div>
                         
                         <div>
                             <label for="lastName">Last Name</label>
-                            <input type="text" id="lastName" name="lastName">
+                            <input type="text" id="lastName" name="lastName" required minlength="3" maxlength="128">
                         </div>
                     </div>
                     
                     <div class="email">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
+                        <input type="email" id="email" name="email" required maxlength="255">
                     </div>
 
                     <div class="message">
                         <label for="message">Type your message...</label>
-                        <input type="text" id="message" name="message">
+                        <input type="text" id="message" name="message" required minlength="50">
                     </div>
 
                     <div class="send-button">
@@ -90,5 +91,7 @@
     </div>
 
     <?php include "../site-structure/footer.html" ?>
+    <script src="./js/validation.js"></script>
+    <script src="../validation/validation.js"></script>
 </body>
 </html>

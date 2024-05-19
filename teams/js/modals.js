@@ -24,7 +24,7 @@ function openUpdatePlayerModal(playerId) {
     
     const xhr = new XMLHttpRequest();
 
-    xhr.open('GET', `process-get-player-by-id.php?playerId=${playerId}`);
+    xhr.open('GET', `./php/process-get-player-by-id.php?playerId=${playerId}`);
 
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -50,7 +50,7 @@ function openUpdateTeamModal(teamId) {
     updateTeamModal.style.display = "block";
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `process-get-team-by-id.php?teamId=${teamId}`);
+    xhr.open('GET', `./php/process-get-team-by-id.php?teamId=${teamId}`);
 
     xhr.onload = function() {
         if (xhr.status >= 200 && xhr.status < 300) {
@@ -70,14 +70,13 @@ function openUpdateTeamModal(teamId) {
 
 function openUpdateGameModal(gameId) {
     updateGameModal.style.display = "block";
-    console.log(gameId);
+
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `process-get-game-by-id.php?gameId=${gameId}`);
+    xhr.open('GET', `./php/process-get-game-by-id.php?gameId=${gameId}`);
 
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             var response = JSON.parse(xhr.responseText);
-            console.log(response);
             updateGameModal.querySelector('#gameId').value = response['id'];
             updateGameModal.querySelector('#name').value = response['name'];
         } else {
@@ -116,7 +115,7 @@ function openDeletePlayerModal(playerId) {
     
     var confirmDelete = confirm("Are you sure you want to delete this player?");
     if (confirmDelete) {
-        window.location.href = "process-delete-player.php?id=" + playerId;
+        window.location.href = "./php/process-delete-player.php?id=" + playerId;
     }
 }
 
@@ -124,7 +123,7 @@ function openDeleteTeamModal(teamId) {
     
     var confirmDelete = confirm("Are you sure you want to delete this team?");
     if (confirmDelete) {
-        window.location.href = "process-delete-team.php?id=" + teamId;
+        window.location.href = "./php/process-delete-team.php?id=" + teamId;
     }
 }
 
@@ -132,7 +131,7 @@ function openDeleteGameModal(gameId) {
     
     var confirmDelete = confirm("Are you sure you want to delete this game?");
     if (confirmDelete) {
-        window.location.href = "process-delete-game.php?id=" + gameId;
+        window.location.href = "./php/process-delete-game.php?id=" + gameId;
     }
 }
 

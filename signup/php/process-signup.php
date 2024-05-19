@@ -48,7 +48,7 @@ $stmt->bind_param("ssss",
                     );
 
 if ($stmt->execute()) {
-    header("Location: ../home/index.php");
+    header("Location: ../../login/index.php");
     exit;
 } else {
     if ($mysqli->errno === 1062) {
