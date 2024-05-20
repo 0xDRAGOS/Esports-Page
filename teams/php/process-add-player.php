@@ -38,16 +38,23 @@ if (!$stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
 }
 
+$firstName = mysqli_real_escape_string($mysqli, $_POST["firstName"]);
+$lastName = mysqli_real_escape_string($mysqli, $_POST["lastName"]);
+$nationality = mysqli_real_escape_string($mysqli, $_POST["nationality"]);
+$alias = mysqli_real_escape_string($mysqli, $_POST["alias"]);
+$position = mysqli_real_escape_string($mysqli, $_POST["position"]);
+$team = mysqli_real_escape_string($mysqli, $_POST["team"]);
+
 $birthday_formatted = date('Y-m-d', strtotime($_POST["birthday"]));
 
 $stmt->bind_param("ssssssi",
-                    $_POST["firstName"],
-                    $_POST["lastName"],
+                    $firstName,
+                    $lastName,
                     $birthday_formatted,
-                    $_POST["nationality"],
-                    $_POST["alias"],
-                    $_POST["position"],
-                    $_POST["team"]
+                    $nationality,
+                    $alias,
+                    $position,
+                    $team
                     );
 
 if ($stmt->execute()) {

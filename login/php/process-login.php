@@ -5,6 +5,9 @@ $user = null;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mysqli = require "../../database/database.php";
+
+    $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
+
     $sql = "SELECT * FROM user WHERE email = ?";
     $stmt = $mysqli->stmt_init();
 
@@ -12,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("SQL error: " . $mysqli->error);
     }
 
-    $stmt->bind_param("s", $_POST["email"]);
+    $stmt->bind_param("s", $email);
 
     if (!$stmt->execute()) {
         die("Execution failed: " . $stmt->error);

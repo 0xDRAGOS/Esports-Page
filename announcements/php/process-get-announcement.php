@@ -7,10 +7,14 @@ if(isset($_GET['announcementId']) && !empty($_GET['announcementId'])) {
     $sql = "SELECT announcement.id, title, content, cover_image, game.name as gameName, game.id as gameId 
             FROM announcement 
             JOIN game ON announcement.game_id = game.id
-            WHERE announcement.id = ?;";
+            WHERE announcement.id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $announcementId);
-    $stmt->execute();
+
+    if (!$stmt->execute()) {
+        die("Error executing statement: " . $stmt->error);
+    }
+
     $result = $stmt->get_result();
 
     $announcementObj = new stdClass();

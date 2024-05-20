@@ -39,10 +39,14 @@ if (!move_uploaded_file($_FILES["cover-image"]["tmp_name"], $targetFile)) {
 
 $mysqli = require "../../database/database.php"; 
 
+$title = $mysqli->real_escape_string($_POST["title"]);
+$content = $mysqli->real_escape_string($_POST["content"]);
+$game_id = $mysqli->real_escape_string($_POST["game"]);
+$announcement_id = $mysqli->real_escape_string($_POST["announcementId"]);
+
 $sql = "UPDATE announcement
         SET title = ?, content = ?, cover_image = ?, game_id = ?
-        WHERE announcement.id = ?;
-        ";
+        WHERE announcement.id = ?;";
 $stmt = $mysqli->stmt_init();
 
 if (!$stmt->prepare($sql)) {
@@ -51,11 +55,11 @@ if (!$stmt->prepare($sql)) {
 
 $targetFileDatabase = "images/" . $title . "." . $imageFileType;
 $stmt->bind_param("sssii",
-                    $_POST["title"],
-                    $_POST["content"],
+                    $title,
+                    $content,
                     $targetFileDatabase,
-                    $_POST["game"],
-                    $_POST["announcementId"]
+                    $game_id,
+                    $announcement_id
                     );
 
 if ($stmt->execute()) {

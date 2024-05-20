@@ -22,12 +22,15 @@ if (!$stmt->prepare($sql)) {
     die("SQL error: " . $mysqli->error);
 }
 
+$name = mysqli_real_escape_string($mysqli, $_POST["name"]);
+$game_id = mysqli_real_escape_string($mysqli, $_POST["game"]);
+
 $founded_formatted = date('Y-m-d', strtotime($_POST["founded"]));
 
 $stmt->bind_param("ssi",
-                    $_POST["name"],
+                    $name,
                     $founded_formatted,
-                    $_POST["game"]
+                    $game_id
                     );
 
 if ($stmt->execute()) {

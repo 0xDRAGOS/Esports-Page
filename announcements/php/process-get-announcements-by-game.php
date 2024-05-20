@@ -8,7 +8,11 @@ if(isset($_GET['gameId']) && !empty($_GET['gameId'])) {
     $sql = "SELECT id, title, content, cover_image FROM announcement WHERE game_id = ?";
     $stmt = $mysqli->prepare($sql);
     $stmt->bind_param('i', $gameId);
-    $stmt->execute();
+
+    if (!$stmt->execute()) {
+        die("Error executing statement: " . $stmt->error);
+    }
+
     $result = $stmt->get_result();
 
     $announcements = array();

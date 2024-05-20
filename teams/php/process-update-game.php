@@ -8,7 +8,7 @@ if (isset($_POST['gameId']) && is_numeric($_POST['gameId'])) {
 
     $mysqli = require "../../database/database.php"; 
 
-    $gameId = $mysqli->real_escape_string($_POST['gameId']);
+    $game_id = $mysqli->real_escape_string($_POST['gameId']);
     $name = $_POST['name'];
 
     $sql = "UPDATE game SET name = ? WHERE id = ?";
@@ -18,7 +18,7 @@ if (isset($_POST['gameId']) && is_numeric($_POST['gameId'])) {
         die("SQL error: " . $mysqli->error);
     }
 
-    $stmt->bind_param("si", $name, $gameId);
+    $stmt->bind_param("si", $name, $game_id);
 
     if ($stmt->execute()) {
         header("Location: ../index.php");

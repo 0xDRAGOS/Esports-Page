@@ -25,6 +25,11 @@ if (strlen($_POST['message']) < 50) {
 
 $mysqli = require "../../database/database.php"; 
 
+$firstName = mysqli_real_escape_string($mysqli, $_POST["firstName"]);
+$lastName = mysqli_real_escape_string($mysqli, $_POST["lastName"]);
+$email = mysqli_real_escape_string($mysqli, $_POST["email"]);
+$message = mysqli_real_escape_string($mysqli, $_POST["message"]);
+
 $sql = "INSERT INTO contact_message (firstName, lastName, email, message)
         VALUES (?, ?, ?, ?);";
 $stmt = $mysqli->stmt_init();
@@ -34,10 +39,10 @@ if (!$stmt->prepare($sql)) {
 }
 
 $stmt->bind_param("ssss",
-                    $_POST["firstName"],
-                    $_POST["lastName"],
-                    $_POST["email"],
-                    $_POST["message"]
+                    $firstName,
+                    $lastName,
+                    $email,
+                    $message
                     );
 
 if ($stmt->execute()) {

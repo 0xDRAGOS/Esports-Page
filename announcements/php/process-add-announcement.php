@@ -32,6 +32,10 @@ if (!move_uploaded_file($_FILES["cover-image"]["tmp_name"], $targetFile)) {
 
 $mysqli = require "../../database/database.php"; 
 
+$title = $mysqli->real_escape_string($_POST["title"]);
+$content = $mysqli->real_escape_string($_POST["content"]);
+$game_id = $mysqli->real_escape_string($_POST["game"]);
+
 $sql = "INSERT INTO announcement (title, content, cover_image, game_id)
         VALUES (?, ?, ?, ?);";
 $stmt = $mysqli->stmt_init();
@@ -42,10 +46,10 @@ if (!$stmt->prepare($sql)) {
 
 $targetFileDatabase = "images/" . $title . "." . $imageFileType;
 $stmt->bind_param("sssi",
-                    $_POST["title"],
-                    $_POST["content"],
+                    $title,
+                    $content,
                     $targetFileDatabase,
-                    $_POST["game"]
+                    $game_id
                     );
 
 if ($stmt->execute()) {

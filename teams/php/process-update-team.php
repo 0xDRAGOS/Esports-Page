@@ -17,9 +17,9 @@ if (isset($_POST['teamId']) && is_numeric($_POST['teamId'])) {
     $mysqli = require "../../database/database.php"; 
 
     $teamId = $mysqli->real_escape_string($_POST['teamId']);
-    $name = $_POST['name'];
-    $founded = $_POST['founded'];
-    $gameId = $_POST['game'];
+    $name = $mysqli->real_escape_string($_POST['name']);
+    $founded = $mysqli->real_escape_string($_POST['founded']);
+    $gameId = $mysqli->real_escape_string($_POST['game']);
 
     $sql = "UPDATE team SET name = ?, founded = ?, game_id = ? WHERE id = ?";
     $stmt = $mysqli->prepare($sql);
