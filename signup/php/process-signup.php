@@ -32,10 +32,10 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $mysqli = require "../../database/database.php"; 
 
-$firstName = mysqli_real_escape_string($mysqli, $_POST["firstName"]);
-$lastName = mysqli_real_escape_string($mysqli, $_POST["lastName"]);
-$email = mysqli_real_escape_string($mysqli, $_POST["email"]);
-$password = mysqli_real_escape_string($mysqli, $_POST["password"]);
+$firstName = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST["firstName"]));
+$lastName = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST["lastName"]));
+$email = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST["email"]));
+$password = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST["password"]));
 
 $sql = "INSERT INTO user (firstName, lastName, email, password_hash)
         VALUES (?, ?, ?, ?);";

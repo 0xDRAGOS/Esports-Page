@@ -6,7 +6,9 @@ $user = null;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $mysqli = require "../../database/database.php";
 
-    $email = mysqli_real_escape_string($mysqli, $_POST["email"]);
+    $email = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST["email"]));
+    $password = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST["password"]));
+    
 
     $sql = "SELECT * FROM user WHERE email = ?";
     $stmt = $mysqli->stmt_init();
@@ -28,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if ($user) {
-        if (password_verify($_POST["password"], $user["password_hash"])) {
+        if (password_verify($password, $user["password_hash"])) {
             $user['loggedIn'] = true;
             $_SESSION['user'] = $user;
             header("Location: ../../home/index.php");

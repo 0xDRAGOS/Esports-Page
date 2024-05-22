@@ -60,6 +60,8 @@ CREATE TABLE section (
 CREATE TABLE gallery (
     id INT AUTO_INCREMENT PRIMARY KEY,
     created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fileName VARCHAR(60),
+    fileExtension VARCHAR(15),
     team_id INT,
     FOREIGN KEY (team_id) REFERENCES team(id) ON DELETE CASCADE
 );

@@ -31,15 +31,18 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
             <a href="../login/index.php">CONTACT</a>
         <?php endif; ?>
 
-        <?php if (isset($_SESSION['user']) && $_SESSION['user']['loggedIn']): ?>
-            <div class="logout-button">
-                <a href="">Hello, <?= htmlspecialchars($_SESSION['user']["firstName"]) ?> <?= htmlspecialchars($_SESSION['user']["lastName"]) ?>!</a>
-                <a href="?action=logout">LOGOUT</a>
-            </div>
-        <?php else: ?>
-            <div class="login-button">
-                <a href="../login/index.php">LOGIN</a>
-            </div>
-        <?php endif; ?>
+        <div class="buttons">
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']['loggedIn']): ?>
+                <div class="logout-button">
+                    <a href="">Hello, <?= htmlspecialchars($_SESSION['user']["firstName"]) ?> <?= htmlspecialchars($_SESSION['user']["lastName"]) ?>!</a>
+                    <a href="?action=logout">LOGOUT</a>
+                </div>
+            <?php else: ?>
+                <div class="login-button">
+                    <a href="../login/index.php">LOGIN</a>
+                </div>
+            <?php endif; ?>
+        </div>
+
     </nav>
 </div>
